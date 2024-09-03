@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { API_ENDPOINT, CARDS_ENDPOINT } from "../config";
-import { handleApiCall } from "../helpers/fetchApi";
+import { getApi } from "../helpers/fetch-api";
 
 export interface CardData {
   name: string;
@@ -13,7 +13,7 @@ const Cards = (props: { id: number }) => {
   const [cardData, setCardData] = useState<CardData>();
 
   useEffect(() => {
-    handleApiCall(`${CARDS_ENDPOINT}${id}`).then((data) => setCardData(data));
+    getApi(`${CARDS_ENDPOINT}${id}`).then((data) => setCardData(data));
   }, []);
 
   return (
