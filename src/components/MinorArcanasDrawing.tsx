@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { determineDeckType } from "../helpers/determine-deck-type";
 import { drawCard } from "../helpers/draw-card";
 import { shuffleCards } from "../helpers/shuffle-cards";
-import { determineCardType } from "../helpers/determine-card-type";
+
+import Cards from "./Cards";
 
 const MinorArcanasDrawing = () => {
   const [cardDraw, setCardDraw] = useState<number[]>([]);
@@ -51,7 +52,7 @@ const MinorArcanasDrawing = () => {
           <p>Cartes tirées</p>
           <ul>
             {cardDraw.map((card) => {
-              return <li>{determineCardType(card)}</li>;
+              return <Cards id={card} />;
             })}
           </ul>
         </>

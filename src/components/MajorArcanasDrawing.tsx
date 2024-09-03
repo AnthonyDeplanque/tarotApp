@@ -3,7 +3,7 @@ import { determineDeckType } from "../helpers/determine-deck-type";
 import { drawCard } from "../helpers/draw-card";
 import { drawMajorArcana } from "../helpers/draw-major-arcana";
 import { shuffleCards } from "../helpers/shuffle-cards";
-import { determineCardType } from "../helpers/determine-card-type";
+import Cards from "./Cards";
 
 const MajorArcanasDrawing = () => {
   const [cardDraw, setCardDraw] = useState<number[]>([]);
@@ -63,9 +63,9 @@ const MajorArcanasDrawing = () => {
         <>
           <p>Cartes tirées</p>
           <ul>
-            {cardDraw.map((card) => (
-              <li>{determineCardType(card)}</li>
-            ))}
+            {cardDraw.map((card) => {
+              return <Cards id={card} />;
+            })}
           </ul>
         </>
       ) : (
@@ -74,7 +74,7 @@ const MajorArcanasDrawing = () => {
       {lastMajorArcana ? (
         <>
           <p>Synthèse</p>
-          <p>{determineCardType(lastMajorArcana)}</p>
+          <Cards id={lastMajorArcana} />
         </>
       ) : (
         ""
