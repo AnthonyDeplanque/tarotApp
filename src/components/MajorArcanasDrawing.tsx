@@ -4,6 +4,7 @@ import { drawCard } from "../helpers/draw-card";
 import { drawMajorArcana } from "../helpers/draw-major-arcana";
 import { shuffleCards } from "../helpers/shuffle-cards";
 import Cards from "./Cards";
+import LittleCardDisplay from "./LittleCardDisplay";
 
 const MajorArcanasDrawing = () => {
   const [cardDraw, setCardDraw] = useState<number[]>([]);
@@ -47,6 +48,18 @@ const MajorArcanasDrawing = () => {
   return (
     <>
       <h1>TIRAGE EN CROIX </h1>
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "wrap",
+        }}
+      >
+        {cards.map((card) => (
+          <LittleCardDisplay id={card} />
+        ))}
+      </div>
       {canDraw ? (
         <button onClick={handleDraw}>tirer</button>
       ) : (

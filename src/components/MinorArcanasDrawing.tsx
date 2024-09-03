@@ -4,6 +4,7 @@ import { drawCard } from "../helpers/draw-card";
 import { shuffleCards } from "../helpers/shuffle-cards";
 
 import Cards from "./Cards";
+import LittleCardDisplay from "./LittleCardDisplay";
 
 const MinorArcanasDrawing = () => {
   const [cardDraw, setCardDraw] = useState<number[]>([]);
@@ -41,6 +42,13 @@ const MinorArcanasDrawing = () => {
   return (
     <>
       <h1>TIRAGE JOURNALIER </h1>
+
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        {cards.map((card) => (
+          <LittleCardDisplay id={card} />
+        ))}
+      </div>
+
       {canDraw ? <button onClick={handleDraw}>tirer</button> : ""}
 
       <button onClick={handleShuffle} disabled={!canShuffle}>

@@ -14,12 +14,13 @@ const Cards = (props: { id: number }) => {
 
   useEffect(() => {
     getApi(`${CARDS_ENDPOINT}${id}`).then((data) => setCardData(data));
-  }, []);
+  }, [id]);
 
   return (
     <li>
       <div>
         <h3>{cardData?.name}</h3>
+
         <img
           src={`${API_ENDPOINT}${cardData?.image}`}
           alt={`${cardData?.name}`}
