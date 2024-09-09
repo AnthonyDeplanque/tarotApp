@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { determineDeckType } from "../helpers/determine-deck-type";
 import { drawCard } from "../helpers/draw-card";
 import { shuffleCards } from "../helpers/shuffle-cards";
-import { determineCardType } from "../helpers/determine-card-type";
+
+import Cards from "./Cards";
+import LittleCardDisplay from "./LittleCardDisplay";
 
 const MinorArcanasDrawing = () => {
   const [cardDraw, setCardDraw] = useState<number[]>([]);
@@ -40,6 +42,13 @@ const MinorArcanasDrawing = () => {
   return (
     <>
       <h1>TIRAGE JOURNALIER </h1>
+
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        {cards.map((card) => (
+          <LittleCardDisplay id={card} />
+        ))}
+      </div>
+
       {canDraw ? <button onClick={handleDraw}>tirer</button> : ""}
 
       <button onClick={handleShuffle} disabled={!canShuffle}>
@@ -51,7 +60,7 @@ const MinorArcanasDrawing = () => {
           <p>Cartes tirées</p>
           <ul>
             {cardDraw.map((card) => {
-              return <li>{determineCardType(card)}</li>;
+              return <Cards id={card} />;
             })}
           </ul>
         </>

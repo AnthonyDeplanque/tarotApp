@@ -3,7 +3,8 @@ import { determineDeckType } from "../helpers/determine-deck-type";
 import { drawCard } from "../helpers/draw-card";
 import { drawMajorArcana } from "../helpers/draw-major-arcana";
 import { shuffleCards } from "../helpers/shuffle-cards";
-import { determineCardType } from "../helpers/determine-card-type";
+import Cards from "./Cards";
+import LittleCardDisplay from "./LittleCardDisplay";
 
 const MajorArcanasDrawing = () => {
   const [cardDraw, setCardDraw] = useState<number[]>([]);
@@ -47,6 +48,18 @@ const MajorArcanasDrawing = () => {
   return (
     <>
       <h1>TIRAGE EN CROIX </h1>
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "wrap",
+        }}
+      >
+        {cards.map((card) => (
+          <LittleCardDisplay id={card} />
+        ))}
+      </div>
       {canDraw ? (
         <button onClick={handleDraw}>tirer</button>
       ) : (
@@ -63,9 +76,9 @@ const MajorArcanasDrawing = () => {
         <>
           <p>Cartes tirées</p>
           <ul>
-            {cardDraw.map((card) => (
-              <li>{determineCardType(card)}</li>
-            ))}
+            {cardDraw.map((card) => {
+              return <Cards id={card} />;
+            })}
           </ul>
         </>
       ) : (
@@ -74,7 +87,7 @@ const MajorArcanasDrawing = () => {
       {lastMajorArcana ? (
         <>
           <p>Synthèse</p>
-          <p>{determineCardType(lastMajorArcana)}</p>
+          <Cards id={lastMajorArcana} />
         </>
       ) : (
         ""

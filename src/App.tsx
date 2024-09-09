@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./App.css";
 import MajorArcanasDrawing from "./components/MajorArcanasDrawing";
 import MinorArcanasDrawing from "./components/MinorArcanasDrawing";
-
 function App() {
   const [isMajorArcanas, setIsMajorArcanas] = useState<boolean>();
   const [isDrawing, setIsDrawing] = useState(false);
